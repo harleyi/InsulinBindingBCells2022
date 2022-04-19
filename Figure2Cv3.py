@@ -246,7 +246,7 @@ SpleenPoplist = ['B_T1_Sp', 'B_T2_Sp', 'B_T3_Sp', 'B_Fo_Sp','B_MZ_Sp', 'B_mem_Sp
 BcellSlice = MaureenImmgen[SpleenPoplist]
 rownorm = BcellSlice.apply(lambda row: (row - np.average(row)) / np.std(row), axis=1)
 
-SelectPoplist = ['B_Fo_Sp','B_MZ_Sp', 'B_mem_Sp']
+SelectPoplist = ['B_MZ_Sp', 'B_Fo_Sp','B_mem_Sp']
 NormBcellMaureenImmgen = MaureenImmgen[['FeatureName', 'cluster 1 Rank', 'cluster 2 Rank','cluster 3 Rank','cluster 1 Average', 'cluster 2 Average','cluster 3 Average']].join(rownorm[SelectPoplist])
 
 '''
@@ -284,12 +284,12 @@ ax1.set_xticklabels(clusters, fontweight='bold')
 ax1.axes.yaxis.set_visible(False)
 
 SelectPopNames = ['Marginal Zone B', 'Follicular B', 'Memory B']
-ax2_xaxis = np.arange(len(SelectPoplist))
+ax2_xaxis = np.arange(len(SelectPopNames))
 ax2.set_xticks(ax2_xaxis)
 ax2.tick_params(axis='x', labelsize='large')
-ax2.set_xticklabels(SelectPoplist, fontweight='bold', rotation=90, ha='left')
+ax2.set_xticklabels(SelectPopNames, fontweight='bold', rotation=90, ha='left')
 ax2.axes.yaxis.set_visible(False)
 
 plt.tight_layout()
-plt.savefig('MaureenClustersHeatmap3subsetv3FullSplenoNorm.png')
-plt.savefig('MaureenClustersHeatmap3subsetv3FullSplenoNorm.svg', dpi=600)
+plt.savefig('MaureenClustersHeatmap3subsetv5.png')
+plt.savefig('MaureenClustersHeatmap3subsetv5.svg', dpi=600)
